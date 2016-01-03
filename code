@@ -1,0 +1,93 @@
+/*
+* Name: Jiajie Li
+* Purpose: This C project uses recursion to calculate the power of a number and the sum of all
+digits in a number.
+*/
+#include <stdio.h>
+int power (int base, int exponent);
+int add(int number);
+int rem = 0;
+int divider = 10;
+int sum = 0;
+int value = 1;
+char clearBuffer[100];
+int main()
+{
+int action;
+int number;
+int base;
+int exponent;
+int i;
+int answer = 0;
+for(i=0; i>­1; i++)
+{
+printf("1. Add the digits of an integer together \n");
+printf("2. Find the power of a number \n");
+printf("3. Quit \n");
+printf("Please enter the number of the action you'd like executed: ");
+scanf("%d", &action);
+printf("\n");
+if (action == 1)
+{
+printf("Please enter the number to be calculated: ");
+printf("\n");
+scanf("%d", &number);
+answer = add(number);
+printf("%d", answer);
+sum = 0;
+printf("\n");
+printf("\n");
+}
+else if (action == 2)
+{
+printf("Please enter the base: ");
+scanf("%d", &base);
+printf("\n");
+fgets(clearBuffer, sizeof clearBuffer, stdin);
+printf("Please enter the exponent: ");
+scanf("%d", &exponent);
+printf("\n");
+fgets(clearBuffer, sizeof clearBuffer, stdin);
+answer = power(base, exponent);
+printf("Answer: %d \n", answer);
+value = 1;
+printf("\n");
+}
+else if (action == 3)
+{
+break;
+}
+}
+}
+int add(int number)
+{
+if (number == 0)
+{
+return sum;
+}
+else
+{
+rem = number%divider; //find remainder
+sum = sum + rem; //add remainder to sum
+return add(number/10); //call recursive function, using number /10 as the parameter
+}
+return sum;
+}
+int power (int base, int exponent)
+{
+if (exponent == 1)
+{
+value *= base;
+}
+else if (exponent != 1)
+{
+value *= base;
+­­exponent;
+return power(value, exponent);
+}
+else if (exponent == 0)
+{
+value = 1;
+}
+return value;
+}
